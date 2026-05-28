@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🌙 معايدة العيد - كل عام وانتم بخير ✨</title>
+  <title>🌙 عيد سعيد يا رحوومه ✨</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Cairo:wght@200;300;400;600;700&family=Reem+Kufi:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -14,190 +15,272 @@
     <source src="https://l.top4top.io/m_3798357dz1.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Music Control Button (hidden until music starts) -->
-  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" style="display:none;">
-    <span class="music-icon" id="musicIcon">🔊</span>
-    <span class="music-waves" id="musicWaves">
-      <span></span><span></span><span></span>
-    </span>
-  </button>
-
-  <!-- ===== Welcome Screen (First thing user sees) ===== -->
+  <!-- ===== Welcome Screen ===== -->
   <div class="welcome-screen" id="welcomeScreen">
-    <div class="welcome-stars" id="welcomeStars"></div>
-    <div class="welcome-content">
-      <div class="welcome-moon">🌙</div>
-      <h1 class="welcome-title">رسالة خاصة ليكِ</h1>
-      <p class="welcome-subtitle">يا رحوومه 💝</p>
-      <button class="welcome-btn" id="welcomeBtn" onclick="startExperience()">
-        <span class="welcome-btn-icon">💌</span>
-        <span>افتحي المفاجأة</span>
-      </button>
-      <p class="welcome-hint">✨ اضغطي عشان تشوفي المفاجأة ✨</p>
+    <div class="welcome-bg-pattern"></div>
+    <div class="welcome-glow welcome-glow-1"></div>
+    <div class="welcome-glow welcome-glow-2"></div>
+    <div class="welcome-frame">
+      <div class="welcome-frame-inner">
+        <div class="welcome-flourish-top">
+          <span class="flourish-line"></span>
+          <span class="flourish-star">✦</span>
+          <span class="flourish-line"></span>
+        </div>
+        <div class="welcome-moon-wrap">
+          <div class="welcome-moon-glow"></div>
+          <span class="welcome-moon">🌙</span>
+        </div>
+        <h1 class="welcome-title">رسالة خاصة</h1>
+        <div class="welcome-separator">
+          <span class="sep-dot"></span>
+          <span class="sep-line"></span>
+          <span class="sep-diamond">◆</span>
+          <span class="sep-line"></span>
+          <span class="sep-dot"></span>
+        </div>
+        <p class="welcome-subtitle">إلى رحوومه</p>
+        <button class="welcome-btn" id="welcomeBtn" onclick="startExperience()">
+          <span>افتحي رسالتك</span>
+          <span class="welcome-btn-star">✧</span>
+        </button>
+      </div>
     </div>
   </div>
 
   <!-- Loading Screen -->
   <div class="loading-screen" id="loadingScreen" style="display:none;">
-    <div class="loading-moon"></div>
-    <div class="loading-text">... جاري تحضير المفاجأة 🌙</div>
+    <div class="loading-frame">
+      <div class="loading-moon-wrap">
+        <div class="loading-moon-glow"></div>
+        <div class="loading-moon"></div>
+      </div>
+      <p class="loading-text">جاري تجهيز مفاجأتكِ</p>
+      <div class="loading-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
   </div>
 
-  <!-- Stars Background -->
-  <div class="stars-container" id="starsContainer"></div>
+  <!-- Music Button -->
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()" style="display:none;">
+    <span class="music-icon" id="musicIcon">🔊</span>
+  </button>
+
+  <!-- Floating Particles -->
+  <div class="particles-layer" id="particlesLayer"></div>
 
   <!-- Main Container -->
   <div class="main-container" id="mainContainer" style="display:none;">
 
     <!-- Envelope -->
-    <div class="envelope-wrapper" id="envelopeWrapper" onclick="openEnvelope()">
-      <div class="envelope">
-        <div class="envelope-flap"></div>
-        <div class="envelope-body">
-          <div class="envelope-text">
-            <span class="icon">💌</span>
-            عندك رسالة خاصة يا رحوومه
+    <div class="envelope-section">
+      <div class="envelope-wrapper" id="envelopeWrapper" onclick="openEnvelope()">
+        <div class="envelope">
+          <div class="envelope-flap"></div>
+          <div class="envelope-body">
+            <div class="envelope-body-inner">
+              <div class="envelope-seal">💌</div>
+              <p class="envelope-label">رسالتكِ</p>
+            </div>
           </div>
         </div>
       </div>
+      <p class="click-hint">المسي الظرف بلطف</p>
     </div>
-    <p class="click-hint">👆 اضغطي على الظرف لفتح المفاجأة</p>
 
-    <!-- Card Container (Hidden Initially) -->
+    <!-- Card -->
     <div class="card-container" id="cardContainer">
+
+      <!-- Top Ornament -->
+      <div class="card-ornament-top">
+        <div class="ornament-line"></div>
+        <div class="ornament-center">
+          <span class="orn-diamond">◆</span>
+          <span class="orn-star">✧</span>
+          <span class="orn-diamond">◆</span>
+        </div>
+        <div class="ornament-line"></div>
+      </div>
+
+      <!-- Card Body -->
       <div class="eid-card">
-        
-        <!-- Pattern Top -->
-        <div class="card-pattern-top"></div>
+        <div class="card-bg-glow card-bg-glow-1"></div>
+        <div class="card-bg-glow card-bg-glow-2"></div>
 
-        <!-- Moon Section -->
-        <div class="moon-section">
-          <div class="crescent-moon">🌙</div>
-          <div class="mini-stars">
-            <div class="mini-star" style="top: 10%; left: 20%; --delay: 0s; animation-delay: 0s;">✦</div>
-            <div class="mini-star" style="top: 25%; right: 15%; --delay: 0.5s; animation-delay: 0.5s;">✧</div>
-            <div class="mini-star" style="top: 60%; left: 10%; --delay: 1s; animation-delay: 1s;">✦</div>
-            <div class="mini-star" style="top: 70%; right: 25%; --delay: 1.5s; animation-delay: 1.5s;">✧</div>
-            <div class="mini-star" style="top: 5%; left: 60%; --delay: 0.7s; animation-delay: 0.7s;">⭐</div>
-            <div class="mini-star" style="top: 80%; left: 50%; --delay: 2s; animation-delay: 2s;">✦</div>
-          </div>
+        <!-- Corner Decorations -->
+        <div class="card-corner card-corner-tl">
+          <svg viewBox="0 0 60 60"><path d="M0 0 L60 0 L60 1 L1 1 L1 60 L0 60 Z" fill="rgba(212,168,67,0.3)"/><path d="M15 0 L60 0 L60 45" fill="none" stroke="rgba(212,168,67,0.15)" stroke-width="0.5"/></svg>
+        </div>
+        <div class="card-corner card-corner-tr">
+          <svg viewBox="0 0 60 60"><path d="M60 0 L0 0 L0 1 L59 1 L59 60 L60 60 Z" fill="rgba(212,168,67,0.3)"/><path d="M45 0 L0 0 L0 45" fill="none" stroke="rgba(212,168,67,0.15)" stroke-width="0.5"/></svg>
+        </div>
+        <div class="card-corner card-corner-bl">
+          <svg viewBox="0 0 60 60"><path d="M0 60 L60 60 L60 59 L1 59 L1 0 L0 0 Z" fill="rgba(212,168,67,0.3)"/></svg>
+        </div>
+        <div class="card-corner card-corner-br">
+          <svg viewBox="0 0 60 60"><path d="M60 60 L0 60 L0 59 L59 59 L59 0 L60 0 Z" fill="rgba(212,168,67,0.3)"/></svg>
         </div>
 
-        <!-- Title -->
-        <h1 class="eid-title">عيد سعيد 🎉</h1>
-        <p class="eid-subtitle">كل عام وانتم بخير وسعادة</p>
-
-        <!-- Divider -->
-        <div class="ornamental-divider">✦ ─── ✦ ─── ✦</div>
-
-        <!-- Message -->
-        <div class="message-section">
-          <p class="message-to">إلى رحوومه 💝</p>
-          <p class="message-body">
-            كل سنة وانتِ أجمل إنسانة في الدنيا 🌹
-            <br>
-            ربنا يفرح قلبك ويحقق كل أحلامك
-            <br>
-            ويخلي <span class="highlight">العيد ده</span> أحلى عيد في حياتك
-            <br>
-            وكل لحظة فيه تكون <span class="highlight">فرحة وسعادة</span>
-            <br><br>
-            عيدك سعيد يا أغلى الناس 💖
-          </p>
-          <p class="message-signature">— ريفو ❤️</p>
-        </div>
-
-        <!-- Divider -->
-        <div class="ornamental-divider">✦ ─── ✦ ─── ✦</div>
-
-        <!-- Surprise Boxes -->
-        <div class="surprise-section">
-          <p class="surprise-title">🎁 افتحي الهدايا دي 🎁</p>
-          <div class="boxes-grid">
-            <div class="surprise-box" onclick="openBox(this, 0)">
-              <div class="box-content">
-                <span class="box-emoji">🤲</span>
-                <span class="box-text">ربنا يفرحك دايماً</span>
+        <!-- Card Content -->
+        <div class="card-content">
+          
+          <!-- Moon -->
+          <div class="card-moon-section">
+            <div class="card-moon-ring">
+              <div class="card-moon-inner">
+                <span class="card-moon-emoji">🌙</span>
               </div>
             </div>
-            <div class="surprise-box" onclick="openBox(this, 1)">
-              <div class="box-content">
-                <span class="box-emoji">💐</span>
-                <span class="box-text">كل سنة وانتِ طيبة</span>
-              </div>
-            </div>
-            <div class="surprise-box" onclick="openBox(this, 2)">
-              <div class="box-content">
-                <span class="box-emoji">🌹</span>
-                <span class="box-text">وحشتيني أوي</span>
-              </div>
-            </div>
-            <div class="surprise-box" onclick="openBox(this, 3)">
-              <div class="box-content">
-                <span class="box-emoji">💎</span>
-                <span class="box-text">انتِ أغلى الناس</span>
-              </div>
-            </div>
-            <div class="surprise-box" onclick="openBox(this, 4)">
-              <div class="box-content">
-                <span class="box-emoji">🦋</span>
-                <span class="box-text">عيدك سعيد يا جميلة</span>
-              </div>
-            </div>
-            <div class="surprise-box" onclick="openBox(this, 5)">
-              <div class="box-content">
-                <span class="box-emoji">🎀</span>
-                <span class="box-text">ربنا يحقق أحلامك</span>
-              </div>
+            <div class="moon-stars">
+              <span class="ms ms-1">✧</span>
+              <span class="ms ms-2">✦</span>
+              <span class="ms ms-3">✧</span>
+              <span class="ms ms-4">✦</span>
             </div>
           </div>
-        </div>
 
-        <!-- Actions -->
-        <div class="actions">
-          <button class="btn btn-gold" onclick="showSpecialMessage()">
-            <span>💝</span> رسالة خاصة
-          </button>
-          <button class="btn btn-outline" onclick="shareCard()">
-            <span>📤</span> مشاركة المعايدة
-          </button>
-        </div>
+          <!-- Title -->
+          <h1 class="eid-title">عيد سعيد</h1>
+          <p class="eid-subtitle">كل عام وأنتِ بخير وسعادة</p>
 
-        <!-- Pattern Bottom -->
-        <div class="card-pattern-bottom"></div>
+          <!-- Divider -->
+          <div class="divider-elegant">
+            <span class="div-line div-line-l"></span>
+            <span class="div-symbol">❖</span>
+            <span class="div-line div-line-r"></span>
+          </div>
+
+          <!-- Message -->
+          <div class="message-section">
+            <p class="message-to">إلى الغالية <em>رحوومه</em></p>
+            <div class="message-body">
+              <p>كل سنة وأنتِ أجمل ما في هذه الدنيا</p>
+              <p>ربنا يفرح قلبكِ الطيب ويحقق لكِ كل أحلامك</p>
+              <p>ويجعل <span class="highlight">هذا العيد</span> بداية أجمل أيام عمرك</p>
+              <p>وكل لحظة فيه تكون <span class="highlight">سعادة وحب</span></p>
+              <p class="message-closing">عيدكِ سعيد يا أغلى الناس</p>
+            </div>
+            <p class="message-signature">ـ ريفو</p>
+          </div>
+
+          <!-- Divider -->
+          <div class="divider-elegant">
+            <span class="div-line div-line-l"></span>
+            <span class="div-symbol">❖</span>
+            <span class="div-line div-line-r"></span>
+          </div>
+
+          <!-- Surprise Boxes -->
+          <div class="surprise-section">
+            <p class="surprise-title">🎁 هداياكِ 🎁</p>
+            <div class="boxes-grid">
+              <div class="surprise-box" onclick="openBox(this, 0)">
+                <div class="box-front"><span class="box-gift">🎁</span></div>
+                <div class="box-back">
+                  <span class="box-emoji">🤲</span>
+                  <span class="box-text">ربنا يفرحك</span>
+                </div>
+              </div>
+              <div class="surprise-box" onclick="openBox(this, 1)">
+                <div class="box-front"><span class="box-gift">🎁</span></div>
+                <div class="box-back">
+                  <span class="box-emoji">💐</span>
+                  <span class="box-text">كل سنة وانتي طيبة</span>
+                </div>
+              </div>
+              <div class="surprise-box" onclick="openBox(this, 2)">
+                <div class="box-front"><span class="box-gift">🎁</span></div>
+                <div class="box-back">
+                  <span class="box-emoji">🌹</span>
+                  <span class="box-text">وحشتيني</span>
+                </div>
+              </div>
+              <div class="surprise-box" onclick="openBox(this, 3)">
+                <div class="box-front"><span class="box-gift">🎁</span></div>
+                <div class="box-back">
+                  <span class="box-emoji">💎</span>
+                  <span class="box-text">أغلى الناس</span>
+                </div>
+              </div>
+              <div class="surprise-box" onclick="openBox(this, 4)">
+                <div class="box-front"><span class="box-gift">🎁</span></div>
+                <div class="box-back">
+                  <span class="box-emoji">🦋</span>
+                  <span class="box-text">عيدك سعيد</span>
+                </div>
+              </div>
+              <div class="surprise-box" onclick="openBox(this, 5)">
+                <div class="box-front"><span class="box-gift">🎁</span></div>
+                <div class="box-back">
+                  <span class="box-emoji">🎀</span>
+                  <span class="box-text">ربنا معاكِ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="actions">
+            <button class="btn btn-primary" onclick="showSpecialMessage()">
+              <span class="btn-icon">💝</span>
+              <span>رسالة خاصة</span>
+            </button>
+            <button class="btn btn-ghost" onclick="shareCard()">
+              <span class="btn-icon">✦</span>
+              <span>مشاركة</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Ornament -->
+      <div class="card-ornament-bottom">
+        <div class="ornament-line"></div>
+        <div class="ornament-center">
+          <span class="orn-diamond">◆</span>
+          <span class="orn-star">✧</span>
+          <span class="orn-diamond">◆</span>
+        </div>
+        <div class="ornament-line"></div>
       </div>
 
       <!-- Footer -->
       <div class="footer">
-        صُنع بكل <span class="heart">❤️</span> حب من ريفو لـ رحوومه | عيد سعيد 🌙
+        <span>صُنع بكل</span>
+        <span class="heart">♥</span>
+        <span>حب</span>
+        <span class="footer-sep">·</span>
+        <span>من ريفو إلى رحوومه</span>
+        <span class="footer-sep">·</span>
+        <span>عيد سعيد 🌙</span>
       </div>
     </div>
-
   </div>
 
-  <!-- Special Message Modal -->
+  <!-- Modal -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
+      <div class="modal-flourish">
+        <span>✦</span><span>❖</span><span>✦</span>
+      </div>
       <div class="modal-emoji">💝</div>
       <h2 class="modal-title">يا رحوومه</h2>
+      <div class="modal-separator">
+        <span></span><span>✦</span><span></span>
+      </div>
       <p class="modal-message">
-        عارف إن الكلام مش هيوفي
-        <br>
-        بس حبيت أقولك إنك
-        <br>
-        من أحلى الناس اللي في حياتي 🌟
-        <br><br>
-        ربنا يخليكي ليا ويديم المحبة بينا
-        <br>
-        وكل عيد وانتِ معايا 💖
-        <br><br>
+        عارف إن الكلام مش هيوفي<br>
+        بس حبيت أقولك إنكِ<br>
+        من أحلى الناس اللي في حياتي<br><br>
+        ربنا يخليكي ليا ويديم المحبة بينا<br>
+        وكل عيد وأنتِ معايا<br><br>
         🌙 عيد مبارك عليكِ 🌙
       </p>
-      <button class="modal-close" onclick="closeModal()">شكراً يا ريفو 💛</button>
+      <button class="modal-close" onclick="closeModal()">شكراً يا ريفو</button>
     </div>
   </div>
 
-  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 </html>
